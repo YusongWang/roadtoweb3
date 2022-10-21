@@ -66,5 +66,8 @@
       "**/hardhat-ts/**"
     ]
   },
-  "dependencies": {}
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^3.9.10"
+  }
 }
