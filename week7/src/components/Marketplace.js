@@ -48,7 +48,9 @@ export default function Marketplace() {
     updateData(items);
   }
 
-  getAllNFTs();
+  if (data.length == 0) {
+    getAllNFTs();
+  }
 
   return (
     <div>

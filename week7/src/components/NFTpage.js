@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function NFTPage(props) {
   const [data, updateData] = useState({});
+  const [reflash, updatereflash] = useState(false);
   const [message, updateMessage] = useState("");
   const [currAddress, updateCurrAddress] = useState("0x");
 
@@ -38,6 +39,8 @@ export default function NFTPage(props) {
       description: meta.description,
     };
     console.log(item);
+
+    updatereflash(true);    
     updateData(item);
     //updateDataFetched(true);
   }
@@ -69,7 +72,9 @@ export default function NFTPage(props) {
   const params = useParams();
   const tokenId = params.tokenId;
 
+  if (reflash == false) {
     getNFTData(tokenId);
+  }
 
   return (
     <div style={{ "min-height": "100vh" }}>
@@ -94,7 +99,7 @@ export default function NFTPage(props) {
                 You are the owner of this NFT
               </div>
             ) : (
-              <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+              <button onClick={(e)=> buyNFT(tokenId,e)} className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
                 Buy this NFT
               </button>
             )}
